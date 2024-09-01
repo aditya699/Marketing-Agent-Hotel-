@@ -1,1 +1,1 @@
-# Marketing-Agent-Hotel-
+# AI Content Generator
