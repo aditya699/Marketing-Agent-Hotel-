@@ -9,3 +9,4 @@ langchain
 html2text
 beautifulsoup4
 serpapi
+google-search-results
