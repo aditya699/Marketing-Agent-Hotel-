@@ -2,3 +2,10 @@ pandas
 numpy
 streamlit
 pyodbc
+langchain-google-genai
+python-dotenv
+langchain_community
+langchain
+html2text
+beautifulsoup4
+serpapi
