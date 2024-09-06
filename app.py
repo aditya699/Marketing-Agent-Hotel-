@@ -34,6 +34,24 @@ def analyze_previous_campaigns(file_path: str) -> pd.Series:
         print(f"🚫 AI Data Analyst: Data format issue - {str(e)}")
         return pd.Series()
 
+def competitor_analysis(file_path:str)->pd.DataFrame:
+    data=pd.read_csv(file_path)
+    data=data[['name','price']]
+    print(data.head(10))
+    return data.head(10)
+
+def events(file_path:str)->pd.DataFrame:
+    data=pd.read_csv(file_path)
+    print(data.columns)
+    data=data[['title','start_date','description']]
+    print(data.head(10))
+    return data.head(10)
+
+
+def get_wheather(file_path:str)->pd.DataFrame:
+    data=pd.read_csv(file_path)
+    print(data)
+    return data
 def main():
     print("🏨 Hotel AI Marketing System: Initializing...")
     print("🤖 AI Concierge: Welcome to the Automated Marketing Campaign Management System.")
@@ -92,4 +110,4 @@ def main():
     print("🏨 Hotel AI Marketing System: Analysis complete. Standing by for further instructions.")
 
 if __name__ == "__main__":
-    main()
+    get_wheather("Data Ingestion/Staging/gurugram_weather_2024-09-02.csv")
