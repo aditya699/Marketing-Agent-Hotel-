@@ -1,6 +1,6 @@
 # AI-Powered Hotel Marketing Automation
 
-![Hotel Industry Marketing Automation](https://saibaba9758140479.blob.core.windows.net/testimages/HOTEL_INDUSTRY.PNG)
+![Hotel Industry AI Marketing  Automation](https://saibaba9758140479.blob.core.windows.net/testimages/HOTEL_INDUSTRY.PNG)
 
 ## Description
 
