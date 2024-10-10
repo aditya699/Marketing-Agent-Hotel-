@@ -7,6 +7,50 @@
     --hologram-color: rgba(74, 144, 226, 0.1);
     --card-bg: rgba(16, 23, 41, 0.8);
     --glow-effect: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+    --success-color: #4caf50;
+    --warning-color: #ff9800;
+}
+
+/* ROAS Card Styles */
+#roas .roas-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#roas .roas-item {
+    text-align: center;
+}
+
+#roas .roas-item h4 {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+
+#roas .large-text {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#prevRoas {
+    color: var(--success-color);
+}
+
+#targetRoas {
+    color: var(--warning-color);
+}
+
+.dashboard-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust the grid layout if necessary */
+.dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 body {
@@ -146,6 +190,9 @@ nav ul li a:hover {
 .result-card pre {
     white-space: pre-wrap;
     word-wrap: break-word;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9em;
+    color: var(--text-color);
 }
 
 /* Scrollbar Styles */
@@ -186,10 +233,61 @@ nav ul li a:hover {
     margin: 5px 0;
 }
 
+/* Campaign Recommendation Styles */
+#campaignRecommendation .content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#campaignRecommendation .recommendation-item {
+    background-color: rgba(74, 144, 226, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#campaignRecommendation .recommendation-item h4 {
+    color: var(--accent-color);
+    margin-bottom: 5px;
+}
+
+#campaignRecommendation .recommendation-item p {
+    margin: 0;
+}
+
 .large-text {
     font-size: 2.5em;
     font-weight: bold;
     color: var(--accent-color);
+}
+
+/* Corporate Message Styles */
+#corporateMessage .content {
+    background-color: rgba(74, 144, 226, 0.05);
+    border-radius: 5px;
+    padding: 15px;
+    font-style: italic;
+    position: relative;
+}
+
+#corporateMessage .content::before {
+    content: '\201C';
+    font-size: 2em;
+    color: var(--accent-color);
+    opacity: 0.5;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+
+#corporateMessage .content::after {
+    content: '\201D';
+    font-size: 2em;
+    color: var(--accent-color);
+    opacity: 0.5;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
 }
 
 @media (max-width: 768px) {

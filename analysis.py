@@ -13,3 +13,4 @@ def get_highpaying_customers(filepath):
         return high_paying_customers
 
 high_paying_customers= get_highpaying_customers("Data Ingestion/Staging/historical_bookings.csv")
+

@@ -30,14 +30,15 @@ params = {
   "q": "Guragon Sector 14",
   "hl": "en",
   "gl": "in",
-  "check_in_date": "2024-09-03",
-  "check_out_date": "2024-09-04",
+  "check_in_date": "2024-10-09",
+  "check_out_date": "2024-10-10",
   "currency": "INR",
   "api_key":"4040378d372e7d863af3811b19de34149fad33254c776cc2bff1b6071a8a87f9"
 }
 
 search = GoogleSearch(params)
 results = search.get_dict()
+print(results)
 # Extract hotel data
 hotels_data = extract_hotel_data(results)
 

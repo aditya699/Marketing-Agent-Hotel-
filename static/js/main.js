@@ -24,12 +24,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function updateDashboard(data) {
+        // Update Occupancy Rate
         document.querySelector('#occupancyRate .large-text').textContent = data.occupancy_rate || '--';
         
+        // Update Weather
         const weatherDisplay = document.querySelector('#weather p');
         weatherDisplay.innerHTML = data.weather ? 
             `<i class="fas fa-${getWeatherIcon(data.weather)}"></i> ${data.weather}` : '--';
 
+        // Update Top Campaigns
         const campaignList = document.querySelector('#topCampaigns ul');
         campaignList.innerHTML = '';
         if (data.top_campaigns) {
@@ -41,13 +44,24 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             campaignList.innerHTML = '<li>No campaign data available</li>';
         }
+
+        // Update ROAS
+        document.getElementById('prevRoas').textContent = data.prev_roas ? data.prev_roas.toFixed(2) : '--';
+        document.getElementById('targetRoas').textContent = data.target_roas ? data.target_roas.toFixed(2) : '--';
     }
 
     function updateResults(data) {
+        updatePersonalizedMessages(data.personalized_messages);
+        updateSocialMediaContent(data.social_media_content);
+        updateCampaignRecommendation(data.campaign_recommendation);
+        updateCorporateMessage(data.corporate_message);
+    }
+
+    function updatePersonalizedMessages(messages) {
         const personalizedMessages = document.querySelector('#personalizedMessages .content');
         personalizedMessages.innerHTML = '';
-        if (data.personalized_messages) {
-            data.personalized_messages.forEach(msg => {
+        if (messages && messages.length > 0) {
+            messages.forEach(msg => {
                 const messageDiv = document.createElement('div');
                 messageDiv.innerHTML = `
                     <h4>${msg.customer_name} (${msg.customer_email})</h4>
@@ -58,12 +72,45 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             personalizedMessages.innerHTML = '<p>No personalized messages generated</p>';
         }
+    }
 
+    function updateSocialMediaContent(content) {
         const socialMediaContent = document.querySelector('#socialMediaContent .content');
-        if (data.social_media_content) {
-            socialMediaContent.innerHTML = formatSocialMediaContent(data.social_media_content);
+        if (content) {
+            socialMediaContent.innerHTML = formatSocialMediaContent(content);
         } else {
             socialMediaContent.innerHTML = '<p>No social media content generated</p>';
+        }
+    }
+
+    function updateCampaignRecommendation(recommendation) {
+        const campaignRecommendation = document.querySelector('#campaignRecommendation .content');
+        if (recommendation) {
+            const lines = recommendation.split('\n');
+            let formattedContent = '';
+            lines.forEach(line => {
+                const [key, value] = line.split(':');
+                if (key && value) {
+                    formattedContent += `
+                        <div class="recommendation-item">
+                            <h4>${key.trim()}</h4>
+                            <p>${value.trim()}</p>
+                        </div>
+                    `;
+                }
+            });
+            campaignRecommendation.innerHTML = formattedContent;
+        } else {
+            campaignRecommendation.innerHTML = '<p>No campaign recommendation generated</p>';
+        }
+    }
+
+    function updateCorporateMessage(message) {
+        const corporateMessageContent = document.querySelector('#corporateMessage .content');
+        if (message) {
+            corporateMessageContent.innerHTML = `<p>${message}</p>`;
+        } else {
+            corporateMessageContent.innerHTML = '<p>No corporate booking message generated</p>';
         }
     }
 
@@ -73,12 +120,12 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentItem = '';
 
         lines.forEach(line => {
-            if (line.startsWith('##') || line.startsWith('POSTS:')) {
+            if (line.startsWith('REELS:') || line.startsWith('POSTS:')) {
                 if (currentItem) {
                     formattedContent += `<div class="social-media-item">${currentItem}</div>`;
                     currentItem = '';
                 }
-                currentItem += `<h4>${line.replace('##', '').trim()}</h4>`;
+                currentItem += `<h4>${line.trim()}</h4>`;
             } else if (line.trim() !== '') {
                 currentItem += `<p>${line.trim()}</p>`;
             }
@@ -96,7 +143,14 @@ document.addEventListener('DOMContentLoaded', function() {
             sunny: 'sun',
             cloudy: 'cloud',
             rainy: 'cloud-rain',
-            stormy: 'bolt'
+            stormy: 'bolt',
+            cool: 'thermometer-quarter',
+            mild: 'thermometer-half',
+            warm: 'thermometer-three-quarters',
+            humid: 'tint',
+            dry: 'sun',
+            windy: 'wind',
+            calm: 'feather'
         };
         return icons[weather.toLowerCase()] || 'question';
     }
