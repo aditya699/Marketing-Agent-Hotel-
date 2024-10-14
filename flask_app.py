@@ -14,7 +14,7 @@ from app import (
 
 # Load environment variables
 load_dotenv()
-os.environ["GOOGLE_API_KEY"] = "AIzaSyAWN2aWUnP_q8b8F9oIlSIKqjjqIyNbO3k"
+os.environ["GOOGLE_API_KEY"] = ""
 
 app = Flask(__name__)
 
