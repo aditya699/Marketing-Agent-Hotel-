@@ -3,26 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel AI Marketing System</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <title>Gamma: AI-Powered Hotel Marketing Suite</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Gamma: Your AI Marketing Agent (Powered By Gemini)</h1>
+            <h1>Gamma: AI-Powered Hotel Marketing Suite</h1>
+            <p>Unleash the power of AI to revolutionize your hotel's marketing strategy</p>
         </header>
 
-        <nav>
-            <ul>
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#run-analysis">Run Analysis</a></li>
-                <li><a href="#results">Results</a></li>
-            </ul>
-        </nav>
-
         <main>
-            <section id="dashboard" class="section">
+            <section id="dashboard" class="hologram">
                 <h2>Real-Time Analytics Dashboard</h2>
                 <div class="dashboard-grid">
                     <div id="occupancyRate" class="dashboard-card">
@@ -53,11 +46,17 @@
                 </div>
             </section>
 
-            <section id="run-analysis" class="section">
-                <button id="runAnalysis" class="btn-holographic"><i class="fas fa-brain"></i> Initiate AI Analysis</button>
+            <section id="ai-tools">
+                <h2>AI-Powered Marketing Tools</h2>
+                <button id="runAnalysis" class="btn-holographic">
+                    <i class="fas fa-brain"></i> Initiate AI Analysis
+                </button>
+                <button id="analyzeSentiment" class="btn-holographic">
+                    <i class="fas fa-heart"></i> Analyze Guest Sentiment
+                </button>
             </section>
 
-            <section id="results" class="section" style="display: none;">
+            <section id="results" style="display: none;">
                 <h2>AI-Generated Marketing Insights</h2>
                 <div class="results-grid">
                     <div id="personalizedMessages" class="result-card">
@@ -78,9 +77,19 @@
                     </div>
                 </div>
             </section>
+
+            <section id="sentimentResults" style="display: none;">
+                <h2>Real-time Sentiment Analysis Results</h2>
+                <!-- Content will be dynamically added here -->
+            </section>
         </main>
     </div>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="../static/js/main.js"></script>
 </body>
 </html>
