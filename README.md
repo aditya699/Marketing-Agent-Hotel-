@@ -80,5 +80,3 @@ Contributions to improve the project are welcome. Please follow these steps:
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-
-Project Link: [https://github.com/yourusername/hotel-marketing-automation](https://github.com/yourusername/hotel-marketing-automation)
